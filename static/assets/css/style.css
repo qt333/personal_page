@@ -153,6 +153,15 @@ nav.navbar.bootsnav {
     -ms-transition: 0.3s linear; 
     -o-transition: 0.3s linear; 
     transition: 0.3s linear;
+    
+}
+
+.navbar-brand a{
+    position: relative;
+    animation-name: example;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-duration:1s;
 }
 /*.navbar-brand*/
 
@@ -525,7 +534,7 @@ span.single-timeline-horizontal.spacial-horizontal-line {width: 88px;}
 -------------------------------------*/
 .experience {
     padding: 50px 0 100px;
-    border-top: 1px solid #e5ebf2;
+    border-top: 0px solid #e5ebf2;
 }
 .experience-content {padding-top: 100px;}
 .single-timeline-box {margin-bottom: 75px;}
@@ -606,7 +615,7 @@ span.single-timeline-horizontal.spacial-horizontal-line {width: 88px;}
 --------------------------------------*/
 .profiles {
     padding:  50px 0 100px;
-    border:  1px solid #e5ebf2;
+    border:  0px solid #e5ebf2;
 }
 
 .profiles-content {padding-top: 100px;}
@@ -681,7 +690,7 @@ span.single-timeline-horizontal.spacial-horizontal-line {width: 88px;}
 --------------------------------------*/
 .portfolio {
     padding:  50px 0 100px;
-    border:  1px solid #e5ebf2;
+    border:  0px solid #e5ebf2;
 }
 
 .portfolio-content {padding-top: 100px;}
