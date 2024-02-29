@@ -1610,9 +1610,10 @@ pre code {
 
 .row-lang {
     /* margin-right: -15px; */
-    margin-left: 325px;
+    /* margin-left: 325px; */
     display: flex;
   }
+  
 .col-lg-1,
 .col-lg-10,
 .col-lg-11,

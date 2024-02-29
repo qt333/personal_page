@@ -113,6 +113,7 @@ nav.navbar.bootsnav.no-background {
 nav.navbar.bootsnav {
     background-color: rgb(0, 0, 0);
     border-bottom: transparent;
+    
     box-shadow: 0 3px 15px rgb(81, 255, 0);
 }
 
@@ -477,6 +478,7 @@ span.single-timeline-horizontal.spacial-horizontal-line {width: 88px;}
 /*-------------------------------------
         lang
 --------------------------------------*/
+/* F:\portfolio_page\static\assets\css\bootstrap.min.css row-lang */
 
 .lang {
     
@@ -488,7 +490,7 @@ span.single-timeline-horizontal.spacial-horizontal-line {width: 88px;}
     padding-top: 100px;
 }
 
-    .section-heading h2 {
+.section-heading h2 {
     font-size: 24px;
     font-weight: 600;
     text-transform: uppercase;
@@ -502,7 +504,7 @@ span.single-timeline-horizontal.spacial-horizontal-line {width: 88px;}
     width: 10%;
     color: #676e81;
     position: relative;
-    top: 6px;
+    top: 10px;
     left: 20px;
 }
 .barWrapper {

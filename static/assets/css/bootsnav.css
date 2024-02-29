@@ -1280,7 +1280,7 @@ body.on-side .wrap-sticky nav.navbar.bootsnav.sticked{
     /* Tabs
     =================================*/ 
     nav.navbar.bootsnav .megamenu-content.tabbed{
-        padding-left: 0 !mportant;
+        padding-left: 0 !important;
     }
     
     nav.navbar.bootsnav .tabbed > li{
@@ -1442,7 +1442,7 @@ body.on-side .wrap-sticky nav.navbar.bootsnav.sticked{
     
     /* Mobile Navigation
     =================================*/ 
-    body.side-right > .wrapper{
+    body.side-right > .wrapper {
         margin-left: 280px;
         margin-right: -280px !important;
     }
