@@ -1609,9 +1609,10 @@ pre code {
 }
 
 .row-lang {
-    /* margin-right: -15px; */
+    margin-right: -15px;
+    margin-left: -15px;
     /* margin-left: 325px; */
-    display: flex;
+    /* display: flex; */
   }
   
 .col-lg-1,

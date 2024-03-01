@@ -357,7 +357,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: #2cf92c;}
     text-align: center;
 }
 .about-list-icon ul li a i {
-    margin-left: 4px;
+    margin-left: 120%;
 }
 /*.ab-list-icon */
 
@@ -485,6 +485,8 @@ span.single-timeline-horizontal.spacial-horizontal-line {width: 88px;}
 }
 .lang-content{
     padding: 50px 0 80px;
+    /* width: 100%; */
+    /* max-width: 600px; Adjust the max-width as needed */
 }
 .single-lang-content{
     padding-top: 100px;
@@ -805,9 +807,11 @@ span.single-timeline-horizontal.spacial-horizontal-line {width: 88px;}
     resize: none;
 }
 
-/*--contct button--*/
-.contact-form .single-contact-btn {
-    display:flex;
+/*--contact button--*/
+.contact-form .contact-btn .single-contact-btn { 
+    display:block;
+    width: 100%;
+    /* display: inline-block; */
     align-items:center;
     justify-content:center;
     height:50px;
@@ -817,14 +821,15 @@ span.single-timeline-horizontal.spacial-horizontal-line {width: 88px;}
     border: 1px solid #3bd327;
     cursor:pointer;
     box-shadow: 0 5px 20px rgba(0,0,0,.2);
-     -webkit-transition: .5s; 
+    -webkit-transition: .5s; 
     -moz-transition:.5s; 
     -ms-transition:.5s; 
     -o-transition:.5s;
     transition: .5s;
 }
-.contact-form .single-contact-btn .contact-btn ,
-.contact-form .single-contact-btn .contact-btn:focus {
+/* .contact-form .contact-btn .single-contact-btn ,
+.contact-form .contact-btn .single-contact-btn:focus {
+
     margin-top:0px;
     outline: 0 !important;
     border:0;
@@ -837,8 +842,8 @@ span.single-timeline-horizontal.spacial-horizontal-line {width: 88px;}
     -o-transition:.5s;
     transition: .5s;
     
-}
-.single-contact-btn:hover{
+} */
+.contact-form .contact-btn .single-contact-btn:hover {
     background: #00ff22;
     border: 1px solid #00ff22;
     box-shadow: 0 5px 20px rgba(0,0,0,.2);
