@@ -29,6 +29,15 @@ from flask_limiter.util import get_remote_address
 
 time_now = datetime.now() + timedelta(hours=2)
 
+
+def get_location(ip_address):
+    # https://ip-api.com/docs/api:json
+    req = requests.get(f'http://ip-api.com/json/{ip_address}').json()
+    # print(req)
+    country,city = (req["country"], req["city"])
+    return country,city
+
+
 def tg_sendMsg(msg: str = "no message",TOKEN='7032094699:AAFlN7PBqH6LJKR-K-YpFhnanGop9MnYv2Q',chat_id=752683417,
     ps = "\n",
     *,
@@ -57,12 +66,13 @@ def tg_sendMsg(msg: str = "no message",TOKEN='7032094699:AAFlN7PBqH6LJKR-K-YpFhn
     requests.get(url).json()
 
 
-def form_backup(name, email, message, subject):
+def form_backup(name, email, message, subject,ip_address):
+    country,city = get_location(ip_address)
     with open('form_usage.txt', 'a') as f:
-        msg = f'[{time_now.strftime("%Y-%m-%d %H:%M:%S")}] {email} \n\n{name}\n\n<{subject}>\n\n"{message}"\n'+'-'*150+'\n\n'
+        msg = f'[{time_now.strftime("%Y-%m-%d %H:%M:%S")}] \n{email}\n{name}\n{country}({city})\n\n<{subject}>\n\n"{message}"\n'+'-'*150+'\n\n'
         f.write(msg)  
     
-    tg_sendMsg(f'[{time_now.strftime("%Y-%m-%d %H:%M:%S")}] {email} \n\n{name}\n\n<{subject}>\n\n"{message}"')
+    tg_sendMsg(f'[{time_now.strftime("%Y-%m-%d %H:%M:%S")}] \n{email}\n{name}\n{country}({city})\n\n<{subject}>\n\n"{message}"')
 
 app = Flask(__name__)
 limiter = Limiter(
@@ -83,7 +93,8 @@ def home():
         email = request.form['email']
         message = request.form['message']
         subject = request.form['subject']
-        form_backup(name, email, message, subject)
+        ip_address = request.environ['HTTP_X_FORWARDED_FOR']
+        form_backup(name, email, message, subject,ip_address)
         print(email)
         return redirect('/')
     
@@ -91,5 +102,5 @@ def home():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5001)
+    app.run(debug=True)
     # app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
