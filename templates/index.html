@@ -1,6 +1,13 @@
 <!doctype html>
 <html class="no-js" lang="en">
     <head>
+		<script>
+			document.addEventListener('click', player);
+			function musicPlay() {
+				document.getElementById('ID').play();
+				document.removeEventListener('click', player);
+			}
+			</script>
         <!-- meta data -->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -48,8 +55,27 @@
 			<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-
+		
     </head>
+	<style>
+		#container {
+		position: relative;
+		text-align: center;
+		margin-bottom: 50px;
+    }
+
+    #volumeControl {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 150px;
+	height: 10px;
+	margin: 0;
+	padding: 0;
+	margin-bottom: 50px;
+
+	}
+	</style>
 	
 	<body>
 		<!--[if lte IE 9]>
@@ -103,7 +129,36 @@
 				<div class="row">
 					<div class="col-md-12 text-center">
 						<div class="header-text">
-							<h2>hi <span>,</span> i am <br> dmytro <br> kaliberda <span>.</span>   </h2>
+							<button id="playButton">Play Audio</button>
+							<div class="container">
+								<input type="range" id="volumeControl" min="0" max="1" step="0.01" value="1" style="margin-top: 5px; background: #27da36;">
+								<audio id="myAudio" loop>
+									<source src="static/assets/music/SAGE - offwhitecoffin [wave_phonk].mp3" type="audio/mp3">
+									Your browser does not support the audio element.
+								</audio>
+							</div>
+							<script>
+								var audio = document.getElementById('myAudio');
+								var playButton = document.getElementById('playButton');
+								var volumeControl = document.getElementById('volumeControl');
+							  
+								playButton.addEventListener('click', function() {
+								  if (audio.paused) {
+									// If audio is paused, play it and change button text to "Stop Music"
+									audio.play();
+									playButton.textContent = 'Stop Music';
+								  } else {
+									// If audio is playing, pause it and change button text to "Play Music"
+									audio.pause();
+									playButton.textContent = 'Play Music';
+								  }
+								});
+								volumeControl.addEventListener('input', function() {
+									// Update the volume when the user adjusts the volume control
+									audio.volume = volumeControl.value;
+								});
+							</script>
+							<h2 style="margin-top: 30px;">hi <span>,</span> i am <br> dmytro <br> kaliberda <span>.</span>   </h2>
 							<p>python developer</p>
 							<a href="static/assets/download/browney.txt" download>download resume</a>
 						</div><!--/.header-text-->
@@ -1042,7 +1097,6 @@ application of engineering principles and design concepts in medicine and biolog
         
         <!--Custom JS-->
         <script src="static/assets/js/custom.js"></script>
-        
     </body>
 	
 </html>

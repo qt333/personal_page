@@ -953,4 +953,47 @@ span.single-timeline-horizontal.spacial-horizontal-line {width: 88px;}
     0%   {bottom:0px;}
     100%  {bottom:7px;}
 }
+
+/* INPUT TYPE RANGE STYLing */
+/*Chrome*/
+/*Chrome*/
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    input[type='range'] {
+      overflow: hidden;
+      width: 80px;
+      /* -webkit-appearance: none; */
+      background-color: #9a905d;
+    }
+    
+    input[type='range']::-webkit-slider-runnable-track {
+      height: 10px;
+      /* -webkit-appearance: none; */
+      color: #09ff00;
+      margin-top: -1px;
+    }
+    
+    input[type='range']::-webkit-slider-thumb {
+      width: 10px;
+      /* -webkit-appearance: none; */
+      height: 10px;
+      cursor: ew-resize;
+      background: #434343;
+      box-shadow: -80px 0 0 80px #09ff00;
+    }
+
+}
+/** FF*/
+input[type="range"]::-moz-range-progress {
+  background-color: #43f752; 
+}
+input[type="range"]::-moz-range-track {  
+  background-color: #43f752;
+}
+/* IE*/
+input[type="range"]::-ms-fill-lower {
+  background-color: #43f752; 
+}
+input[type="range"]::-ms-fill-upper {  
+  background-color: #43f752;
+}
 /*========================Thank you=================
