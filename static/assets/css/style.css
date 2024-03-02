@@ -687,7 +687,7 @@ span.single-timeline-horizontal.spacial-horizontal-line {width: 88px;}
     transform:scale(1);
     top:0;
 }
-.single-profile:hover .profile-icon-name,.single-profile:hover .profile-txt a>i{color: #fff;}
+.single-profile:hover .profile-icon-name,.single-profile:hover .profile-txt a>i{color: rgb(255, 255, 255);}
 .single-profile:hover .profile-border {border:transparent;}
 /*-------------------------------------
         9. Portfolio
