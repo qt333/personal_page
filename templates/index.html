@@ -77,15 +77,23 @@
 	margin-bottom: 50px;
 
 	}
+
+	canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: transparent;
+	  /* color: #000; */
+      z-index: 0; /* Canvas is at z-index 1 */
+    }
+
 	</style>
 	
-	<body>
-		<!--[if lte IE 9]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-        <![endif]-->
-		
+	<body>		
 		<!-- top-area Start -->
-		<header class="top-area">
+		<header class="top-area" >
 			<div class="header-area">
 				<!-- Start Navigation -->
 			    <nav class="navbar navbar-default bootsnav dark no-background">
@@ -119,13 +127,12 @@
 			    </nav><!--/nav-->
 			    <!-- End Navigation -->
 			</div><!--/.header-area-->
-
 		    <div class="clearfix"></div>
 
 		</header><!-- /.top-area-->
 		<!-- top-area End -->
 		<!-- fluid -->
-		<canvas id="renderSurface" style="width: 100%; height: 100%;"></canvas> 
+		<canvas id="renderSurface"></canvas> 
 		<!--welcome-hero start -->
 		<section id="welcome-hero" class="welcome-hero">
 			<div class="container">
@@ -1109,8 +1116,63 @@ application of engineering principles and design concepts in medicine and biolog
             /* Initiate the Fluid object with that canvas */
             const fluid = new Fluid(canvas);
 
+			fluid.applyBackground('solid', '#e66465');
+
+			// Gradient Background
+			fluid.applyBackground('gradient', '#e66465, #9198e5', 'linear');
+			fluid.applyBackground('gradient', '#e66465, #9198e5', 'radial');
+			fluid.applyBackground('gradient', '#f69d3c, #3f87a6', 'conic');
+			fluid.applyBackground('gradient', '#f69d3c, #3f87a6 50px', 'repeating-linear');
+			fluid.applyBackground('gradient', '#f69d3c, #3f87a6 50px', 'repeating-radial');
+
+			// Image Background
+			fluid.applyBackground(
+				'image', 
+				// './image.jpg', 
+				'r.jpg', 
+				{
+					repeat: 'repeat',
+					position: 'center',
+					size: '100px',
+					color: 'none'  
+				}
+			);
+
+			fluid.mapBehaviors({
+				sim_resolution: 128,
+				dye_resolution: 512,
+
+				paused: false,
+				embedded_dither: true,
+
+				dissipation: 0.98,
+				velocity: .98,
+				pressure: .8,
+				pressure_iteration: 20,
+				curl: 1,
+				emitter_size: 0.5,
+
+				render_shaders: true,
+				multi_color: true,
+
+				render_bloom: false,
+				bloom_iterations: 8,
+				bloom_resolution: 256,
+				intensity: 0.8,
+				threshold: 0.6,
+				soft_knee: 0.7,
+
+				// background_color: { r: 0, g: 0, b: 0 },
+				transparent: true
+			});
+
             /* Activate the fluid */
             fluid.activate();
+
+			// var context = canvas.getContext('2d');
+			// // Set black background
+			// context.fillStyle = '#000'; // Black color
+    		// context.fillRect(324, 34, canvas.width, canvas.height);
         </script>
     </body>
 	
