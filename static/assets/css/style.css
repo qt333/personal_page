@@ -228,11 +228,12 @@ nav.navbar.bootsnav .navbar-toggle i{color: #2cf92c;}
     display: flex;
     align-items: center;
     justify-content: center;
-    position:relative;
+    /* position:relative; */
     background:url(../images/about/welcome-banner.jpg)no-repeat;
     background-size:cover;
     background-position: center;
     height:890px;
+    z-index: 0;
 }
 .welcome-hero:before{
     position:absolute;
