@@ -9,8 +9,16 @@
 			}
 		</script>
 		<!-- fluid -->
-		<script src="https://cdn.jsdelivr.net/npm/fluid-canvas@latest"></script>
+		<!-- <script id="fluid-canvas" src="https://cdn.jsdelivr.net/npm/fluid-canvas@latest"></script> -->
         <!-- meta data -->
+		<script>
+			if (window.innerWidth > 1000) {
+			//Run JS code that is to be loaded only on desktop browsers
+			/* Activate the fluid */
+			document.write('<script id="fluid-canvas" src="https://cdn.jsdelivr.net/npm/fluid-canvas@latest"><\/script>');
+			fluid.activate();
+		}
+		</script>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, , maximum-scale=1.0, user-scalable=0">
@@ -1110,64 +1118,78 @@ application of engineering principles and design concepts in medicine and biolog
 
 		<!-- fluid -->
 		<script>
-            /* Get a reference to your canvas */
-            const canvas = document.getElementById('renderSurface');
+			
+				console.log("This will run only in desktop browsers");
 
-            /* Initiate the Fluid object with that canvas */
-            const fluid = new Fluid(canvas);
+				/* Get a reference to your canvas */
+				const canvas = document.getElementById('renderSurface');
 
-			fluid.applyBackground('solid', '#e66465');
+				/* Initiate the Fluid object with that canvas */
+				const fluid = new Fluid(canvas);
 
-			// Gradient Background
-			fluid.applyBackground('gradient', '#e66465, #9198e5', 'linear');
-			fluid.applyBackground('gradient', '#e66465, #9198e5', 'radial');
-			fluid.applyBackground('gradient', '#f69d3c, #3f87a6', 'conic');
-			fluid.applyBackground('gradient', '#f69d3c, #3f87a6 50px', 'repeating-linear');
-			fluid.applyBackground('gradient', '#f69d3c, #3f87a6 50px', 'repeating-radial');
+				fluid.applyBackground('solid', '#e66465');
 
-			// Image Background
-			fluid.applyBackground(
-				'image', 
-				// './image.jpg', 
-				'r.jpg', 
-				{
-					repeat: 'repeat',
-					position: 'center',
-					size: '100px',
-					color: 'none'  
-				}
-			);
+				// Gradient Background
+				fluid.applyBackground('gradient', '#e66465, #9198e5', 'linear');
+				fluid.applyBackground('gradient', '#e66465, #9198e5', 'radial');
+				fluid.applyBackground('gradient', '#f69d3c, #3f87a6', 'conic');
+				fluid.applyBackground('gradient', '#f69d3c, #3f87a6 50px', 'repeating-linear');
+				fluid.applyBackground('gradient', '#f69d3c, #3f87a6 50px', 'repeating-radial');
 
-			fluid.mapBehaviors({
-				sim_resolution: 128,
-				dye_resolution: 512,
+				// Image Background
+				fluid.applyBackground(
+					'image', 
+					// './image.jpg', 
+					'r.jpg', 
+					{
+						repeat: 'repeat',
+						position: 'center',
+						size: '100px',
+						color: 'none'  
+					}
+				);
 
-				paused: false,
-				embedded_dither: true,
+				fluid.mapBehaviors({
+					sim_resolution: 128,
+					dye_resolution: 512,
 
-				dissipation: 0.98,
-				velocity: .98,
-				pressure: .8,
-				pressure_iteration: 20,
-				curl: 1,
-				emitter_size: 0.5,
+					paused: false,
+					embedded_dither: true,
 
-				render_shaders: true,
-				multi_color: true,
+					dissipation: 0.98,
+					velocity: .98,
+					pressure: .8,
+					pressure_iteration: 20,
+					curl: 1,
+					emitter_size: 0.5,
 
-				render_bloom: false,
-				bloom_iterations: 8,
-				bloom_resolution: 256,
-				intensity: 0.8,
-				threshold: 0.6,
-				soft_knee: 0.7,
+					render_shaders: true,
+					multi_color: true,
 
-				// background_color: { r: 0, g: 0, b: 0 },
-				transparent: true
-			});
+					render_bloom: false,
+					bloom_iterations: 8,
+					bloom_resolution: 256,
+					intensity: 0.8,
+					threshold: 0.6,
+					soft_knee: 0.7,
 
-            /* Activate the fluid */
-            fluid.activate();
+					// background_color: { r: 0, g: 0, b: 0 },
+					transparent: true
+				});
+
+			if (window.innerWidth > 1000) {
+				//Run JS code that is to be loaded only on desktop browsers
+				/* Activate the fluid */
+				// document.write('<script id="fluid-canvas" src="https://cdn.jsdelivr.net/npm/fluid-canvas@latest" defer><\/script>');
+				fluid.activate();
+			}
+
+			if (window.innerWidth < 999) {
+				//Remove HTML elements not to be shown in mobile devices
+				document.getElementById("renderSurface").remove();
+				// document.getElementById("fluid-canvas").remove();
+
+			}	
 
 			// var context = canvas.getContext('2d');
 			// // Set black background
