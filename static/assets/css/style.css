@@ -228,22 +228,25 @@ nav.navbar.bootsnav .navbar-toggle i{color: #2cf92c;}
     display: flex;
     align-items: center;
     justify-content: center;
-    position:relative;
+    /* position:relative; */   /* dissable to make fluidjs make animation above bg picture ggwp*/
     background:url(../images/about/welcome-banner.jpg)no-repeat;
     background-size:cover;
     background-position: center;
     height:890px;
+    z-index: 0;  /* fluidjs make animation above black area site not bg picture */
+   
 }
 
-.welcome-hero:before{
+/* .welcome-hero:before{
     position:absolute;
     content: " ";
     top:0;
     left:0;
-    /* background:rgba(31,44,108,.65); */
+    background:rgba(31,44,108,.65);
     width:100%;
     height:100%;
-}
+    z-index: -1;
+} */
 
 /*.header-text-area*/
 .header-text h2 {
