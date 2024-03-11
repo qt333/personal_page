@@ -11,15 +11,7 @@
 		<!-- fluid -->
 		<!-- <script id="fluid-canvas" src="https://cdn.jsdelivr.net/npm/fluid-canvas@latest"></script> -->
         <!-- meta data -->
-		<script>
-			if (window.innerWidth > 1000) {
-			//Run JS code that is to be loaded only on desktop browsers
-			/* Activate the fluid */
-			// document.write('<script id="fluid-canvas" src="https://cdn.jsdelivr.net/npm/fluid-canvas@latest"><\/script>');
-			document.write('<script id="fluid-canvas" src="https://cdn.jsdelivr.net/gh/qt333/personal_page@fluidjs/fluid.js"><\/script>');
-			fluid.activate();
-		}
-		</script>
+		<!-- fluid.js here was -->
 
 
         <meta charset="utf-8">
@@ -183,10 +175,105 @@
 							<p>python developer</p>
 							<a href="static/assets/download/browney.txt" download>download resume</a>
 						</div><!--/.header-text-->
+						<br>
+						<br><br><br>
+						<button id="FluidJs">FluidJs On</button>
+						<script id="fluid-canvas" src="https://cdn.jsdelivr.net/gh/qt333/personal_page@fluidjs/fluid.js"></script>
+						<script>
+
+							if (window.innerWidth < 999) {
+								//Remove HTML elements not to be shown in mobile devices
+								document.getElementById("renderSurface").remove();
+								document.getElementById("fluid-canvas").remove();
+								document.getElementById("FluidJs").remove();
+							}
+							
+							// FluifJS turn on\off button
+							var FluidJs = document.getElementById('FluidJs');
+
+							const canvas = document.getElementById('renderSurface');
+							/* Initiate the Fluid object with that canvas */
+							const fluid = new Fluid(canvas);
+
+							FluidJs.addEventListener('click', function() {
+								
+								
+								if (FluidJs.textContent == 'FluidJs On') {
+
+									// document.write('<script id="fluid-canvas" src="https://cdn.jsdelivr.net/gh/qt333/personal_page@fluidjs/fluid.js"><\/script>');
+									
+
+
+									fluid.applyBackground('solid', '#e66465');
+
+									// 	// Gradient Background
+									fluid.applyBackground('gradient', '#e66465, #9198e5', 'linear');
+									fluid.applyBackground('gradient', '#e66465, #9198e5', 'radial');
+									fluid.applyBackground('gradient', '#f69d3c, #3f87a6', 'conic');
+									fluid.applyBackground('gradient', '#f69d3c, #3f87a6 50px', 'repeating-linear');
+									fluid.applyBackground('gradient', '#f69d3c, #3f87a6 50px', 'repeating-radial');
+
+									// Image Background
+									fluid.applyBackground(
+										'image', 
+										// './image.jpg', 
+										'r.jpg', 
+										{
+											repeat: 'repeat',
+											position: 'center',
+											size: '100px',
+											color: 'none'  
+										}
+									);
+
+									fluid.mapBehaviors({
+										sim_resolution: 128,
+										dye_resolution: 512,
+
+										paused: false,
+										embedded_dither: true,
+
+										dissipation: 0.98,
+										velocity: .98,
+										pressure: .8,
+										pressure_iteration: 20,
+										curl: 1,
+										emitter_size: 0.5,
+
+										render_shaders: true,
+										multi_color: true,
+
+										render_bloom: false,
+										bloom_iterations: 8,
+										bloom_resolution: 256,
+										intensity: 0.8,
+										threshold: 0.6,
+										soft_knee: 0.7,
+
+										// background_color: { r: 0, g: 0, b: 0 },
+										transparent: true
+									});
+									
+									fluid.activate();
+									
+									console.log('change buttin')
+
+									FluidJs.textContent = 'FluidJs Off';
+
+									} else {
+
+									document.getElementById("renderSurface").remove();
+									document.getElementById("fluid-canvas").remove();
+
+									FluidJs.textContent = '';
+
+									}
+									});
+						</script>
 					</div><!--/.col-->
 				</div><!-- /.row-->
 			</div><!-- /.container-->
-		
+			
 		</section><!--/.welcome-hero-->
 		<!--welcome-hero end -->
 		
@@ -1122,77 +1209,135 @@ application of engineering principles and design concepts in medicine and biolog
 		<!-- fluid -->
 		<script>
 			
-				console.log("This will run only in desktop browsers");
+			console.log("This will run only in desktop browsers");
 
-				/* Get a reference to your canvas */
-				const canvas = document.getElementById('renderSurface');
+			/* Get a reference to your canvas */
+			// const canvas = document.getElementById('renderSurface');
 
-				/* Initiate the Fluid object with that canvas */
-				const fluid = new Fluid(canvas);
+			// /* Initiate the Fluid object with that canvas */
+			// const fluid = new Fluid(canvas);
 
-				fluid.applyBackground('solid', '#e66465');
+			// // FluifJS turn on\off button
+			// var FluidJs = document.getElementById('FluidJs');
 
-				// Gradient Background
-				fluid.applyBackground('gradient', '#e66465, #9198e5', 'linear');
-				fluid.applyBackground('gradient', '#e66465, #9198e5', 'radial');
-				fluid.applyBackground('gradient', '#f69d3c, #3f87a6', 'conic');
-				fluid.applyBackground('gradient', '#f69d3c, #3f87a6 50px', 'repeating-linear');
-				fluid.applyBackground('gradient', '#f69d3c, #3f87a6 50px', 'repeating-radial');
+			// 	FluidJs.addEventListener('click', function() {
+			// 		if (FluidJs.textContent == 'FluidJs On') {
+			// 		// If audio is paused, play it and change button text to "Stop Music"
 
-				// Image Background
-				fluid.applyBackground(
-					'image', 
-					// './image.jpg', 
-					'r.jpg', 
-					{
-						repeat: 'repeat',
-						position: 'center',
-						size: '100px',
-						color: 'none'  
-					}
-				);
+			// 		FluidJs.textContent = 'Stop Music';
+			// 		} else {
+			// 		// If audio is playing, pause it and change button text to "Play Music"
+			// 		FluidJs.textContent = 'Play Music';
+			// 		}
+			// 	});
 
-				fluid.mapBehaviors({
-					sim_resolution: 128,
-					dye_resolution: 512,
+			// function fluidjs_enable () {
 
-					paused: false,
-					embedded_dither: true,
+			// 	console.log('fliud strart')
+					
+			// 	if (FluidJs.textContent == 'FluidJs On') {
 
-					dissipation: 0.98,
-					velocity: .98,
-					pressure: .8,
-					pressure_iteration: 20,
-					curl: 1,
-					emitter_size: 0.5,
+			// 	document.write('<script id="fluid-canvas" src="https://cdn.jsdelivr.net/gh/qt333/personal_page@fluidjs/fluid.js"><\/script>');
+				
+			// 	fluid.applyBackground('solid', '#e66465');
+				
+			// 	fluid.activate();
+				
+			// 	console.log('change buttin')
 
-					render_shaders: true,
-					multi_color: true,
+			// 	FluidJs.textContent = 'FluidJs Off';
 
-					render_bloom: false,
-					bloom_iterations: 8,
-					bloom_resolution: 256,
-					intensity: 0.8,
-					threshold: 0.6,
-					soft_knee: 0.7,
+			// 	} else {
 
-					// background_color: { r: 0, g: 0, b: 0 },
-					transparent: true
-				});
+			// 	document.getElementById("renderSurface").remove();
+			// 	document.getElementById("fluid-canvas").remove();
+			// 	FluidJs.textContent = 'FluidJs On';
+				
+			// 	}
+				
+			// }
+				
+			// 	FluidJs.addEventListener('click', function() {
+			// 		// /* Activate the fluid */
+			// 		fluidjs_enable();
+				
+			// 	});
 
-			if (window.innerWidth > 1000) {
+			
+			// if (window.innerWidth > 1000) {
+
+			// 	fluid.applyBackground('solid', '#e66465');
+
+			// 	// Gradient Background
+			// 	fluid.applyBackground('gradient', '#e66465, #9198e5', 'linear');
+			// 	fluid.applyBackground('gradient', '#e66465, #9198e5', 'radial');
+			// 	fluid.applyBackground('gradient', '#f69d3c, #3f87a6', 'conic');
+			// 	fluid.applyBackground('gradient', '#f69d3c, #3f87a6 50px', 'repeating-linear');
+			// 	fluid.applyBackground('gradient', '#f69d3c, #3f87a6 50px', 'repeating-radial');
+
+			// 	// Image Background
+			// 	fluid.applyBackground(
+			// 		'image', 
+			// 		// './image.jpg', 
+			// 		'r.jpg', 
+			// 		{
+			// 			repeat: 'repeat',
+			// 			position: 'center',
+			// 			size: '100px',
+			// 			color: 'none'  
+			// 		}
+			// 	);
+
+			// 	fluid.mapBehaviors({
+			// 		sim_resolution: 128,
+			// 		dye_resolution: 512,
+
+			// 		paused: false,
+			// 		embedded_dither: true,
+
+			// 		dissipation: 0.98,
+			// 		velocity: .98,
+			// 		pressure: .8,
+			// 		pressure_iteration: 20,
+			// 		curl: 1,
+			// 		emitter_size: 0.5,
+
+			// 		render_shaders: true,
+			// 		multi_color: true,
+
+			// 		render_bloom: false,
+			// 		bloom_iterations: 8,
+			// 		bloom_resolution: 256,
+			// 		intensity: 0.8,
+			// 		threshold: 0.6,
+			// 		soft_knee: 0.7,
+
+			// 		// background_color: { r: 0, g: 0, b: 0 },
+			// 		transparent: true
+			// 	});
+
+			
 				//Run JS code that is to be loaded only on desktop browsers
 				/* Activate the fluid */
 				// document.write('<script id="fluid-canvas" src="https://cdn.jsdelivr.net/npm/fluid-canvas@latest" defer><\/script>');
-				fluid.activate();
-			}
+				// fluid.activate();
+			// }
 
-			if (window.innerWidth < 999) {
-				//Remove HTML elements not to be shown in mobile devices
-				document.getElementById("renderSurface").remove();
-				// document.getElementById("fluid-canvas").remove();
+			// if (window.innerWidth < 999) {
+			// 	//Remove HTML elements not to be shown in mobile devices
+			// 	document.getElementById("renderSurface").remove();
+			// 	// document.getElementById("fluid-canvas").remove();
 
-			}	
+			// }	
+
+			
+			// if (window.innerWidth > 1000) {
+			// //Run JS code that is to be loaded only on desktop browsers
+			// /* Activate the fluid */
+			// // document.write('<script id="fluid-canvas" src="https://cdn.jsdelivr.net/npm/fluid-canvas@latest"><\/script>');
+			// document.write('<script id="fluid-canvas" src="https://cdn.jsdelivr.net/gh/qt333/personal_page@fluidjs/fluid.js"><\/script>');
+			// fluid.activate();
+			// }
 
 			// var context = canvas.getContext('2d');
 			// // Set black background
